@@ -1,4 +1,4 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Storage } from '@ionic/storage';
 import { ToastController } from 'ionic-angular';
@@ -37,13 +37,26 @@ export class AuthProvider {
           email: email,
           password: password
         }
-      }    ).subscribe(data => {
+      }).subscribe(data => {
         this.setUser(data);
         this.ifSignedIn();
       }, data => {
         this.showToast(data.error.error);
       }
     );
+  }
+
+  signUp(user) {
+    this.http.post(
+      `${API_URL}/users`,
+      { user: user }
+    ).subscribe(data => {
+      this.ifSignedIn();
+      this.setUser(data);
+      this.showToast("Signed up successfully", 2000);
+    }, data=> {
+      this.showToast(data.error.error);
+    });
   }
 
   private setUser(user) {
