@@ -59,6 +59,13 @@ export class AuthProvider {
     });
   }
 
+  logout() {
+    this.storage.remove('user');
+    this._currentUser = null;
+    this.ifSignedOut();
+    this.showToast("Signed out successfully", 2000);
+  }
+
   private setUser(user) {
     this._currentUser = user;
     this.storage.set('user', user);
