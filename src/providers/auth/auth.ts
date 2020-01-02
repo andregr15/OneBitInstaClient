@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Storage } from '@ionic/storage';
 import { ToastController } from 'ionic-angular';
@@ -11,6 +11,13 @@ export class AuthProvider {
   private ifSignedOut = () => {};
 
   constructor(public http: HttpClient, private storage: Storage, private toastr: ToastController) {
+  }
+
+  authHeader() {
+    return new HttpHeaders({
+      'X-User-Email': this._currentUser.email,
+      'X-User-Token': this._currentUser.authentication_token
+    });
   }
 
   config(ifSignedIn = () => {}, ifSignedOut = () => {}) {
