@@ -1,12 +1,7 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
-
-/**
- * Generated class for the SignInPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+import { IonicPage } from 'ionic-angular';
+import { NgForm } from '@angular/forms';
+import { AuthProvider } from '../../providers/auth/auth';
 
 @IonicPage()
 @Component({
@@ -15,11 +10,10 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class SignInPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(private auth: AuthProvider) {
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad SignInPage');
+  onLogin(form: NgForm) {
+    this.auth.login(form.value.email, form.value.password);
   }
-
 }
