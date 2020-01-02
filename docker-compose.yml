@@ -10,4 +10,4 @@ services:
         - "53704:53704"
       volumes:
         - ".:/app"
-      command: ionic serve -c
+      command: ionic serve
