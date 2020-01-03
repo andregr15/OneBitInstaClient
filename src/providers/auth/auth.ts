@@ -6,7 +6,7 @@ import { API_URL } from '../../constants';
 
 @Injectable()
 export class AuthProvider {
-  private _currentUser: {} = null;
+  private _currentUser: any = null;
   private ifSignedIn = () => {};
   private ifSignedOut = () => {};
 
