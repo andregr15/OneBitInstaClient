@@ -3,11 +3,5 @@
 </ion-header>
 
 <ion-content padding>
-  <ion-list>
-    <ion-item *ngFor="let post of posts">
-      <img [src]="post.photoUrl" col-12>
-      <p>{{ post.description }}</p>
-      <p>{{ post.owner.name }}</p>
-    </ion-item>
-  </ion-list>
+  <post-list [posts]="posts"></post-list>
 </ion-content>
