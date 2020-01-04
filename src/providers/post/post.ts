@@ -19,6 +19,15 @@ export class PostProvider {
     return this.formatPost(data);
   }
 
+  async userPosts(userId) {
+    const data: any = await this.http.get(
+      `${API_URL}/api/v1/users/${userId}/posts`,
+      { headers: this.auth.authHeader() }
+    ).toPromise();
+
+    return this.formatPost(data);
+  }
+
   private formatPost(data) {
     let posts: Post[] = [];
 

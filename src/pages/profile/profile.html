@@ -3,6 +3,19 @@
 </ion-header>
 
 
-<ion-content padding>
+<ion-content>
+  <profile [user]="currentUser" isMe="true"></profile>
+  <post-list [posts]="posts" showToolbar="true" currentList="group"></post-list>
 
+  <ion-fab left bottom>
+    <button ion-fab>
+      <ion-icon name="create"></ion-icon>
+    </button>
+  </ion-fab>
+
+  <ion-fab right bottom>
+    <button ion-fab color="secondary" (click)="newPost()">
+      <ion-icon name="paper-plane"></ion-icon>
+    </button>
+  </ion-fab>
 </ion-content>

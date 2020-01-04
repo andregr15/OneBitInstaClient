@@ -13,6 +13,10 @@ export class AuthProvider {
   constructor(public http: HttpClient, private storage: Storage, private toastr: ToastController) {
   }
 
+  get currentUser() {
+    return this._currentUser;
+  }
+
   authHeader() {
     return new HttpHeaders({
       'X-User-Email': this._currentUser.email,
