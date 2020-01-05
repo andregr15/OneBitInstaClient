@@ -5,7 +5,7 @@ export class User {
     private _email: string, 
     private _photoUrl: string,
     private _description: string = "",
-    private _counting: any = {}
+    private _meta: any = {}
   ) {}
 
   get id() {
@@ -29,20 +29,25 @@ export class User {
   }
 
   get followersCount() {
-    if(this._counting.hasOwnProperty('followers'))
-      return this._counting.followers;
+    if(this._meta.hasOwnProperty('followers'))
+      return this._meta.followers;
     return 0;
   }
 
   get followingsCount() {
-    if(this._counting.hasOwnProperty('followings'))
-      return this._counting.followings;
+    if(this._meta.hasOwnProperty('followings'))
+      return this._meta.followings;
     return 0;
   }
 
   get postsCount() {
-    if(this._counting.hasOwnProperty('posts'))
-      return this._counting.posts;
+    if(this._meta.hasOwnProperty('posts'))
+      return this._meta.posts;
     return 0;
+  }
+
+  get isFollowing() {
+    if(this._meta.hasOwnProperty('isFollowing')) return this._meta.isFollowing;
+    return false;
   }
 }

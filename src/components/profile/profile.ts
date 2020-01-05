@@ -1,5 +1,6 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { User } from '../../models/user';
+import { NavController } from 'ionic-angular';
 
 @Component({
   selector: 'profile',
@@ -8,4 +9,22 @@ import { User } from '../../models/user';
 export class ProfileComponent {
   @Input() public user: User;
   @Input() public isMe: boolean = false;
+  @Input() public isFollowing: boolean = false;
+
+  @Output() public onFollow = new EventEmitter();
+  @Output() public onUnfollow = new EventEmitter();
+
+  constructor(private navCtrl: NavController) {}
+
+  checkFollow(following: boolean) {
+    if(following) {
+      this.onFollow.emit();
+    } else {
+      this.onUnfollow.emit();
+    }
+  }
+
+  openFollowPage(){
+    this.navCtrl.push('FollowPage', { user: this.user} );
+  }
 }

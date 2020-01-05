@@ -18,6 +18,7 @@ export class OtherProfilePage {
 
   public user: User;
   public posts: Post[];
+  public isFollowing: boolean = false;
 
   constructor(
     private navParams: NavParams,
@@ -29,12 +30,26 @@ export class OtherProfilePage {
     this.loadUser();
     this.loadPosts();
   }
+  
+  follow() {
+    this.userProvider.follow(this.user).then(
+      () => this.isFollowing = true
+    )
+  }
+
+  unfollow() {
+    this.userProvider.unfollow(this.user).then(
+      () => this.isFollowing = false
+    )
+  }
 
   private loadUser() {
     this.userProvider.load(this.navParams.get('id'))
       .then(
-        (user: User) => this.user = user
-      );
+        (user: User) => {
+          this.user = user
+          this.isFollowing = user.isFollowing
+      });
   }
 
   private loadPosts() {
@@ -43,5 +58,4 @@ export class OtherProfilePage {
         (posts: Post[]) => this.posts = posts
       );
   }
-
 }
