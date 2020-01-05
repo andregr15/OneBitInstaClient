@@ -1,4 +1,4 @@
-<div class="buttons" *ngIf = "showToolbar">
+<div class="buttons" *ngIf="showToolbar">
   <ion-grid no-padding>
     <ion-row>
       <ion-col>
@@ -9,7 +9,7 @@
 
       <ion-col text-center>
         <button ion-button block clear icon-only (click)="changeList('details')">
-          <ion-icon name="expand" [ngClass]="{ active: (currentList == 'details') }"></ion-icon>     
+          <ion-icon name="expand" [ngClass]="{ active: (currentList == 'details') }"></ion-icon>
         </button>
       </ion-col>
 
@@ -33,7 +33,7 @@
   <ion-list>
     <ion-item no-padding *ngFor="let post of posts">
       <ion-grid>
-        <ion-row>
+        <ion-row (tap)="detailUser(post.owner)">
           <ion-col col-2>
             <img [src]="post.owner.photoUrl">
           </ion-col>
@@ -41,7 +41,7 @@
             <ion-title>{{ post.owner.name }}</ion-title>
           </ion-col>
         </ion-row>
-        
+
         <ion-row>
           <ion-col col-12>
             <img [src]="post.photoUrl">
@@ -55,5 +55,5 @@
         </ion-row>
       </ion-grid>
     </ion-item>
-  </ion-list>  
+  </ion-list>
 </div>
