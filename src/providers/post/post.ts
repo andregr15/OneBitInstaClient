@@ -28,6 +28,17 @@ export class PostProvider {
     return this.formatPost(data);
   }
 
+  async create(photo, description) {
+    const post = { photo_base64: photo, description: description };
+    const response: any = await this.http.post(
+      `${API_URL}/api/v1/posts`,
+      { post: post },
+      { headers: this.auth.authHeader() }
+    ).toPromise();
+
+    return response;
+  }
+
   private formatPost(data) {
     let posts: Post[] = [];
 
