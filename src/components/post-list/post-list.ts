@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { Post } from '../../models/post';
-import { NavController } from 'ionic-angular';
+import { NavController, AlertController } from 'ionic-angular';
 import { User } from '../../models/user';
 import { PostProvider } from '../../providers/post/post';
 import { AuthProvider } from '../../providers/auth/auth';
@@ -17,7 +17,8 @@ export class PostListComponent {
   constructor(
     private navCtrl: NavController,
     private postProvider: PostProvider,
-    private auth: AuthProvider
+    private auth: AuthProvider,
+    private alert: AlertController
   ) {}
 
   changeList(newList) {
@@ -52,6 +53,33 @@ export class PostListComponent {
 
   isPostOwner(post: Post) : boolean {
     return post.owner.id == this.auth.currentUser.id;
+  }
+
+  remove(post: Post) {
+    this.alert.create({
+      title: "Remove Post",
+      message: "You're about to remove your post. Do you want to proceed?",
+      buttons: [
+        {
+          text: 'No', role: 'cancel'
+        },
+        {
+          text: 'Yes', handler: () => this.confirmExclusion(post)
+        }
+      ]
+    }).present();
+  }
+
+  confirmExclusion(post: Post) {
+    this.postProvider.remove(post)
+      .then(() => {
+        let postIndex = this.posts.indexOf(post);
+        this.posts.splice(postIndex, 1);
+        this.alert.create({
+          title: "Removed",
+          message: "Post successfully removed"
+        }).present();
+      })
   }
 
 }
