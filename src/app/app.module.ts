@@ -13,6 +13,7 @@ import { PostProvider } from '../providers/post/post';
 import { UserProvider } from '../providers/user/user';
 import { OtherProfilePageModule } from '../pages/other-profile/other-profile.module';
 import { FollowPageModule } from '../pages/follow/follow.module';
+import { SearchProvider } from '../providers/search/search';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { FollowPageModule } from '../pages/follow/follow.module';
     Camera,
     AuthProvider,
     PostProvider,
-    UserProvider
+    UserProvider,
+    SearchProvider
   ]
 })
 export class AppModule {}
