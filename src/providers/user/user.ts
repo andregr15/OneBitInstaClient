@@ -34,22 +34,23 @@ export class UserProvider {
   }
 
   async loadFollows(user: User) {
-    const data: any = await this.http.get(
+    const response: any = await this.http.get(
       `${API_URL}/api/v1/users/${user.id}/followings`,
       { headers: this.auth.authHeader() }
     ).toPromise();
 
     return {
-      followers: this.formatUsersList(data.followers),
-      followings: this.formatUsersList(data.followings)
+      followers: this.formatUsersList(response.followers),
+      followings: this.formatUsersList(response.followings)
     }
   }
 
-  private formatUsersList(data: any) {
+  private formatUsersList(data: any): User[] {
     let users: User[] = [];
     data.data.forEach(
       user => users.push(this.formatUser(user))
     )
+    return users;
   }
 
   private formatResponse(response: any): User {

@@ -25,6 +25,6 @@ export class ProfileComponent {
   }
 
   openFollowPage(){
-    this.navCtrl.push('FollowPage', { user: this.user} );
+    this.navCtrl.push('FollowPage', { user: this.user } );
   }
 }

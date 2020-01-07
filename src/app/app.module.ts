@@ -12,6 +12,7 @@ import { AuthProvider } from '../providers/auth/auth';
 import { PostProvider } from '../providers/post/post';
 import { UserProvider } from '../providers/user/user';
 import { OtherProfilePageModule } from '../pages/other-profile/other-profile.module';
+import { FollowPageModule } from '../pages/follow/follow.module';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { OtherProfilePageModule } from '../pages/other-profile/other-profile.mod
     IonicModule.forRoot(MyApp),
     IonicStorageModule.forRoot(),
     OtherProfilePageModule,
+    FollowPageModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
