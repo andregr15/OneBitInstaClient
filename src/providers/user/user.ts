@@ -18,6 +18,16 @@ export class UserProvider {
     return this.formatResponse(response);
   }
 
+  async update(user: any) {
+    const response: any = await this.http.put(
+      `${API_URL}/api/v1/users/${this.auth.currentUser.id}`,
+      { user },
+      { headers: this.auth.authHeader() }
+    ).toPromise();
+
+    return response;
+  }
+
   async follow(user: User) {
     return await this.http.post(
       `${API_URL}/api/v1/users/${user.id}/followings`,

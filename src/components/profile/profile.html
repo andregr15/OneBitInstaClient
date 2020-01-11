@@ -10,7 +10,7 @@
 
   <ion-row>
     <ion-col col-3>
-      <img [src]="user ? user.photoUrl : ''">
+      <user-photo [user]="user" [userPhoto]="user?.photoUrl"></user-photo>
     </ion-col>
 
     <ion-col col-3 (click)="openFollowPage()">

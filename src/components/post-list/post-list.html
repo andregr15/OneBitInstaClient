@@ -35,7 +35,7 @@
       <ion-grid>
         <ion-row (tap)="detailUser(post.owner)">
           <ion-col col-2>
-            <img [src]="post.owner.photoUrl">
+            <user-photo style="zoom:1" [user]="post.owner" [userPhoto]="post?.owner?.photoUrl"></user-photo>
           </ion-col>
           <ion-col col-10>
             <ion-title>{{ post.owner.name }}</ion-title>

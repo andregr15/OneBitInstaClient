@@ -1,0 +1,54 @@
+<ion-header>
+  <shared-header pageTitle="Edit Profile"></shared-header>
+</ion-header>
+
+
+<ion-content padding>
+  <form #form="ngForm" (ngSubmit)="updateUser(form)">
+    <ion-grid>
+      <ion-row>
+        <ion-col col-12 text-center>
+          <user-photo [user]="user" [userPhoto]="userPhoto" (click)="takePicture()"></user-photo>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <p text-right>*tap to change</p>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col col-12>
+          <ion-item>
+            <ion-label floating>Name</ion-label>
+            <ion-input type="text" name="name" ngModel required [value]="user?.name"></ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col col-12>
+          <ion-item>
+            <ion-label floating>Email</ion-label>
+            <ion-input type="email" name="email" ngModel required [value]="user?.email"></ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col>
+          <ion-item>
+            <ion-label floating>Description</ion-label>
+            <ion-textarea name="description" ngModel required [value]="user?.description"></ion-textarea>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+
+      <ion-row margin-top>
+        <ion-col>
+          <button ion-button type="submit" block color="purple" [disabled]="form.invalid">Save</button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </form>
+</ion-content>

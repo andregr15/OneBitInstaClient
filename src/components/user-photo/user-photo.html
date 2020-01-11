@@ -1,0 +1,2 @@
+<img [src]="userPhoto" *ngIf="user && user.photoUrl">
+<ion-icon name="contact" color="purple" *ngIf="!user || !user.photoUrl" class="default_picture"></ion-icon>

@@ -34,6 +34,10 @@ export class ProfilePage {
     this.navCtrl.parent.select(2);
   }
 
+  editProfile() {
+    this.navCtrl.push('ProfileEditPage', { id: this.auth.currentUser.id });
+  }
+
   private loadUser() {
     this.userProvider.load(this.auth.currentUser.id).then(
       (user: User) => this.currentUser = user

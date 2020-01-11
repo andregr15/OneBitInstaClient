@@ -23,6 +23,7 @@ export class NewPostPage {
     destinationType: this.camera.DestinationType.DATA_URL,
     mediaType: this.camera.MediaType.PICTURE,
     correctOrientation: true,
+    sourceType: this.camera.PictureSourceType.PHOTOLIBRARY
   }
 
   constructor(

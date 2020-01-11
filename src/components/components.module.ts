@@ -5,18 +5,21 @@ import { PostListComponent } from './post-list/post-list';
 import { ProfileComponent } from './profile/profile';
 import { FollowingComponent } from './following/following';
 import { LikeComponent } from './like/like';
+import { UserPhotoComponent } from './user-photo/user-photo';
 
 @NgModule({
 	declarations: [HeaderComponent,
     PostListComponent,
     ProfileComponent,
     FollowingComponent,
-    LikeComponent],
+    LikeComponent,
+    UserPhotoComponent],
 	imports: [IonicModule],
 	exports: [HeaderComponent,
     PostListComponent,
     ProfileComponent,
     FollowingComponent,
-    LikeComponent]
+    LikeComponent,
+    UserPhotoComponent]
 })
 export class ComponentsModule {}
